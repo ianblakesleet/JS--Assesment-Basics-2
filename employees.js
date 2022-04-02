@@ -41,7 +41,7 @@ class Employee {
 */
 
 //CODE HERE
-let empOne = new Employee('Jess', 'weekday mornings, weekday afternoons');
+let empOne = new Employee('Jess', ['weekday mornings, weekday afternoons']);
 
 /*
     Call the `getSchedule` method on the
@@ -65,6 +65,8 @@ let empOne = new Employee('Jess', 'weekday mornings, weekday afternoons');
 
 //CODE HERE
 let empTwo = { ...empOne };
+empTwo.name = 'Nick';
+// let empTwo = { ...empOne, name: 'Nick' };
 
 console.log(empTwo);
 
@@ -93,6 +95,19 @@ console.log(empTwo);
 
 //CODE HERE
 
+class Manager extends Employee {
+  constructor(name, shifts, employees) {
+    super(name, shifts);
+    this.employees = employees;
+  }
+  getEmployees() {
+    console.log(`${this.name} manages ${this.employees}`);
+  }
+  addEmployee(emp) {
+    this.employees.push(emp);
+  }
+}
+
 /*
     Create a new instance of your class.
     Save it to a variable called `manager`.
@@ -105,6 +120,11 @@ console.log(empTwo);
 */
 
 //CODE HERE
+const manager = new Manager(
+  'Joe',
+  ['weekday mornings, weekday afternoons'],
+  ['Riley', 'Hue']
+);
 
 /*
     Call the `getEmployees` method on the
@@ -112,6 +132,7 @@ console.log(empTwo);
 */
 
 //CODE HERE
+manager.getEmployees();
 
 /*
     Call the `addEmployee` method on the 
@@ -120,7 +141,7 @@ console.log(empTwo);
 */
 
 //CODE HERE
-
+manager.addEmployee('Johnny');
 /*
     Call the `getEmployees` method on the
     `manager` object again to confirm 
@@ -128,3 +149,4 @@ console.log(empTwo);
 */
 
 //CODE HERE
+manager.getEmployees();
