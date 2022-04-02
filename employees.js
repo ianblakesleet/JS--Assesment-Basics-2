@@ -49,7 +49,7 @@ let empOne = new Employee('Jess', 'weekday mornings, weekday afternoons');
 */
 
 //CODE HERE
-empOne.getSchedule();
+// empOne.getSchedule();
 
 /*
     Make a copy of the empOne object

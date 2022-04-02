@@ -34,10 +34,15 @@ const cart = [
 
 //CODE HERE
 
-const summedPrice = cart.reduce(function (acc, curr) {
-  return acc.price + curr.price;
-});
-console.log(summedPrice);
+const cartTotal = cart.reduce((acc, order) => acc + order.price, 0);
+
+// const cartTotal = cart.reduce((acc, order) => {
+//   return acc + order.price
+// },0)
+
+//start acc at 0, because first item is an object
+
+// console.log(cartTotal);
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -55,6 +60,10 @@ console.log(summedPrice);
 */
 
 //CODE HERE
+const calcFinalPrice = (cartTotal, couponValue, tax) => {
+  return cartTotal * (tax + 1) - couponValue;
+};
+console.log(calcFinalPrice(cartTotal, 10, 0.06));
 
 //////////////////PROBLEM 3////////////////////
 /*  
@@ -77,7 +86,12 @@ console.log(summedPrice);
 */
 
 /*
-    TEXT ANSWER HERE
+    The properties i will need will be a,
+    name: string
+    address: string
+    phone: number string
+    isRegular: boolean
+
 
 */
 
@@ -87,3 +101,9 @@ console.log(summedPrice);
 */
 
 //CODE HERE
+const customer1 = {
+  name: 'bob',
+  address: '1234 lane drive',
+  phone: '0000000000',
+  isRegular: true,
+};

@@ -37,7 +37,7 @@ const pizza = {
   category: 'entree',
   popularity: 10,
   rating: 9,
-  tags: 'loaded',
+  tags: ['loaded', 'meat', 'veggies'],
 };
 
 //////////////////PROBLEM 2////////////////////
@@ -59,7 +59,7 @@ const pizza = {
 */
 
 //CODE HERE
-// console.log(pizza.tags);
+// console.log(pizza.tags[1]);
 
 /*
     Third, destructure the price off of the
@@ -69,7 +69,7 @@ const pizza = {
 */
 
 //CODE HERE
-const { price } = pizza;
+// const { price } = pizza;
 // console.log(price);
 
 /*
@@ -102,15 +102,15 @@ const foodArr = [
     category: 'entree',
     popularity: 10,
     rating: 9,
-    tags: 'loaded',
+    tags: ['loaded', 'meat', 'veggies'],
   },
   {
     name: 'veggie',
-    price: 12,
+    price: 8,
     category: 'entree',
     popularity: 7,
     rating: 4,
-    tags: 'healthy',
+    tags: ['loaded', 'healthy', 'veggies'],
   },
   {
     name: 'taco',
@@ -118,7 +118,7 @@ const foodArr = [
     category: 'entree',
     popularity: 8,
     rating: 9,
-    tags: 'meaty',
+    tags: ['cheese', 'three', 'veggies'],
   },
   {
     name: 'dorito',
@@ -126,7 +126,7 @@ const foodArr = [
     category: 'app',
     popularity: 5,
     rating: 10,
-    tags: 'loaded',
+    tags: ['loaded', 'seasoning', 'beans'],
   },
 ];
 //////////////////PROBLEM 4////////////////////
@@ -143,13 +143,17 @@ const foodArr = [
 
 //CODE HERE
 
-const filteredFood = foodArr.filter((tag) => {
-  if (tag.tags === 'loaded') {
-    return tag;
-  }
+// const filteredFood = foodArr.filter((tag) => {
+//   if (tag.tags === 'loaded') {
+//     return tag;
+//   }
+// });
+
+const filteredFood = foodArr.filter((foodObj) => {
+  return foodObj.tags.includes('loaded');
 });
 
-console.log(filteredFood);
+// console.log(filteredFood);
 //////////////////PROBLEM 5////////////////////
 /* 
     Now let's write a function that's a little
@@ -182,7 +186,7 @@ console.log(filteredFood);
         if it is, return objects whose value for the given
         property is greater than the `number` passed in
 
-        If the type isn't `below`, return objects whose
+        If the type is`below`, return objects whose
         value for the given property is less than the 
         `number` passed in
     
@@ -190,7 +194,16 @@ console.log(filteredFood);
 */
 
 //CODE HERE
-
+const filterByProperty = (property, number, type) => {
+  const filteredArr = foodArr.filter((entree) => {
+    if (type === 'above') {
+      return entree[property] > number;
+    } else if (type === 'below') {
+      return entree[property] < number;
+    }
+  });
+  return filteredArr;
+};
 /*
     Invoke the `filterByProperty` function passing
     in a value for each paramter.
@@ -199,3 +212,4 @@ console.log(filteredFood);
 */
 
 //CODE HERE
+console.log(filterByProperty('price', 10, 'above'));

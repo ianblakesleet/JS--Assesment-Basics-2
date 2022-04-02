@@ -50,12 +50,12 @@ const deliveryAreaZipCodes = [85205, 85204, 85203, 85213, 85206];
 
 //CODE HERE
 
-const canWeDeliver = (zipCode) => {
-  let x = deliveryAreaZipCodes;
-  if (x.includes(zipCode)) {
+const canWeDeliver = (zipcode) => {
+  if (deliveryAreaZipCodes.includes(zipcode)) {
     return "You're in our delivery zone!";
-  } else return "Sorry, we can't deliver to that addres";
+  } else return `Sorry, we can't deliver to that address`;
 };
+// console.log(canWeDeliver(85211));
 
 // console.log(canWeDeliver(85213));
 /* 
@@ -77,12 +77,12 @@ const canWeDeliver = (zipCode) => {
 
 // CODE HERE
 const canWeDeliverTwo = (zipCode) => {
-  let x = deliveryAreaZipCodes;
-  for (let i = 0; i < x.length; i++) {
-    if (i === zipCode) {
-      return 'yes';
-    } else return 'no';
+  for (let i = 0; i < deliveryAreaZipCodes.length; i++) {
+    if ((zipCode = deliveryAreaZipCodes[i])) {
+      return "You're in our delivery zone!";
+    }
   }
+  return `Sorry, we can't deliver to that address`;
 };
 
 //////////////////PROBLEM 3////////////////////
@@ -119,18 +119,24 @@ const deals = [
 */
 
 //CODE HERE
-const newDeals = deals.replace();
+deals[0].title = deals[0].title.replace('15', '10');
+
+// console.log(deals);
+
 /*
-    The restaurant is going to continue its
-    family deal for another month. 
+The restaurant is going to continue its
+family deal for another month. 
 
-    Reassign the value of the second deal's desc
-    to be itself, but use the `replace` method
-    to replace the word March with April.
+Reassign the value of the second deal's desc
+to be itself, but use the `replace` method
+to replace the word March with April.
 
-    You should also make sure that there is no
-    whitespace in this string, since it seems
-    to be displaying wrong on the live site.
+You should also make sure that there is no
+whitespace in this string, since it seems
+to be displaying wrong on the live site.
 */
 
 //CODE HERE
+deals[1].desc = deals[1].desc.replace('March', 'April').trim();
+
+console.log(deals);
